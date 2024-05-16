@@ -4,6 +4,8 @@ import {connectDB} from "./database/database"
 import {routeNotFound} from "./middleware/routeNotFound";
 import {errorHandler} from "./middleware/errorHandler"
 import { httpResponse } from "./helpers/createResponse";
+import { BASEURL } from "../constants";
+import { categoryRouter } from "./routes/categoryRouter";
 
 dotenv.config();
 
@@ -25,6 +27,7 @@ try{
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(`${BASEURL}/`, categoryRouter)
 app.use("/ok", (_req, _res) => {  _res.status(200).send(httpResponse(true, "OK", {}))   })
 
 app.use(routeNotFound);

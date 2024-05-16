@@ -1,24 +1,21 @@
 import mongoose, { Document, Schema } from "mongoose";
-import { Subcategory } from "./subcategory";
 
-interface CategoryModel extends Document {
+interface ItemModel extends Document {
   name: string;
   image: string;
   description: string;
+  price: number;
   taxApplicability: boolean;
   tax: number;
-  taxType?: string;
-  subcategories: Schema.Types.ObjectId[];
 }
 
-const categorySchema = new Schema<CategoryModel>({
+const itemSchema = new Schema<ItemModel>({
   name: { type: String, required: true },
   image: { type: String, required: true },
   description: { type: String, required: true },
+  price: { type: Number, required: true },
   taxApplicability: { type: Boolean, default: false },
   tax: { type: Number, default: 0 },
-  taxType: { type: String },
-  subcategories: [{ type: Schema.Types.ObjectId, ref: "Subcategory" }],
 });
 
-export const Category = mongoose.model<CategoryModel>("Category", categorySchema);
+export const Item = mongoose.model<ItemModel>("Item", itemSchema);
