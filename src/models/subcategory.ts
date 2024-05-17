@@ -1,8 +1,9 @@
 import mongoose, { Document, Schema } from "mongoose";
 import { Item } from "./item";
 
-interface SubcategoryModel extends Document {
+export interface SubcategoryModel extends Document {
   name: string;
+  groupType: string;
   image: string;
   description: string;
   taxApplicability: boolean;
@@ -12,6 +13,7 @@ interface SubcategoryModel extends Document {
 
 const subcategorySchema = new Schema<SubcategoryModel>({
   name: { type: String, required: true },
+  groupType:{ type: String, required: true},
   image: { type: String, required: true },
   description: { type: String, required: true },
   taxApplicability: { type: Boolean, default: false },
