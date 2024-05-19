@@ -2,10 +2,10 @@
 
 ### clone
 ```bash
-git clone https://github.com/arvind3417/pixelwand.git
+https://github.com/rohithvudayana/Menu_Management.git
 ```
 ```bash
-cd pixelwand
+cd Menu_Management
 ```
 
 
@@ -22,9 +22,8 @@ npm install
 ### ENV-setup
 Make sure your env file looks like this or you can visit .env.example
 ```bash
-JWT_ACCESS_SECRET="your-jwt-access-secret"
-JWT_REFRESH_SECRET="your-jwt-refresh-secret"
-CONNECTIONSTR="your-mongo-connection-string-url"
+PORT=3003
+CONNECTION=mongodb+srv://your_username:your_password@cluster0.wvgx0bg.mongodb.net/Guestara
 ```
 
 ### Run
@@ -36,10 +35,9 @@ npm run dev
 ### Documentation
 The following documentation is based on the examples in the task (i.e. existed state of Database)
 ```bash
-https://documenter.getpostman.com/view/21199515/2s9YJW4k7g
+[https://documenter.getpostman.com/view/21199515/2s9YJW4k7g](https://docs.google.com/document/d/1RtM4F2-LY2hVAVqh1fIWRDvM03JCOFknpc3_0yEUGwM/edit)
 ```
 
-### Tests - Integration Testing
-![image](https://github.com/arvind3417/pixelwand/assets/91880276/58c28369-73e6-4f8c-a10e-2a7ab057426c)
+
 
 
