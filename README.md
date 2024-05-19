@@ -32,10 +32,16 @@ Enter the below command to run in dev
 npm run dev
 ```
 
-### Documentation
+### Documentation ( google docs )
+The following documentation is about total things done in the task.
+```bash
+https://docs.google.com/document/d/1RtM4F2-LY2hVAVqh1fIWRDvM03JCOFknpc3_0yEUGwM/edit?usp=sharing
+```
+
+### Documentation ( Postman )
 The following documentation is based on the examples in the task (i.e. existed state of Database)
 ```bash
-[https://documenter.getpostman.com/view/21199515/2s9YJW4k7g](https://docs.google.com/document/d/1RtM4F2-LY2hVAVqh1fIWRDvM03JCOFknpc3_0yEUGwM/edit)
+https://documenter.getpostman.com/view/32462672/2sA3QmDEV5
 ```
 
 
