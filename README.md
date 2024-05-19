@@ -46,15 +46,15 @@ https://documenter.getpostman.com/view/32462672/2sA3QmDEV5
 
 ### Loom Video ( Postman Documentation)
 ```bash
-[https://documenter.getpostman.com/view/32462672/2sA3QmDEV5](https://www.loom.com/share/2f07a7c7f59145d1928c171b1bcd2a0c?sid=14060743-2f18-45ec-b908-3ac89bfcc26e)
+https://www.loom.com/share/2f07a7c7f59145d1928c171b1bcd2a0c?sid=14060743-2f18-45ec-b908-3ac89bfcc26e
 ```
 
 ### Live Link ( Deployed in Render )
 ```bash
-[https://documenter.getpostman.com/view/32462672/2sA3QmDEV5](https://www.loom.com/share/2f07a7c7f59145d1928c171b1bcd2a0c?sid=14060743-2f18-45ec-b908-3ac89bfcc26e)
+https://menu-management-i7vf.onrender.com
 ```
 
 ### Github Repo Link 
 ```bash
-(https://github.com/rohithvudayana/Menu_Management)
+https://github.com/rohithvudayana/Menu_Management
 ```
