@@ -1,5 +1,6 @@
 import mongoose, { Document, Schema } from "mongoose";
 
+// Define the structure of the Item document
 export interface ItemModel extends Document {
   name: string;
   groupType: string;
@@ -10,6 +11,7 @@ export interface ItemModel extends Document {
   tax: number;
 }
 
+// Define the schema for the Item model
 const itemSchema = new Schema<ItemModel>({
   name: { type: String, required: true },
   groupType:{ type: String, required: true},
@@ -20,4 +22,5 @@ const itemSchema = new Schema<ItemModel>({
   tax: { type: Number, default: 0 },
 });
 
+// Create the Item model using the schema
 export const Item = mongoose.model<ItemModel>("Item", itemSchema);
