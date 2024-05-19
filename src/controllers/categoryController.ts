@@ -32,7 +32,7 @@ export const getAllCategories = asyncWrapper(
     async (_req: Request, res: Response, next: NextFunction) => {
         try {
             const allCategories = await Category.find({});
-            if (!allCategories || allCategories.length === 0) {
+            if (!allCategories) {
                 return next(CustomErrors.NotFoundError("No categories found."));
             }
             res.status(StatusCodes.OK).json(httpResponse(true, "All categories retrieved successfully", allCategories));
@@ -78,6 +78,17 @@ export const editCategory = asyncWrapper(
                 return next(CustomErrors.NotFoundError("Category not found."));
             }
             res.status(StatusCodes.OK).json(httpResponse(true, "Category updated successfully", updatedCategory));
+        } catch (error) {
+            next(error);
+        }
+    }
+);
+
+export const deleteAllCategories = asyncWrapper(
+    async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            await Category.deleteMany({});
+            res.status(StatusCodes.OK).json(httpResponse(true, "All categories deleted successfully", {}));
         } catch (error) {
             next(error);
         }

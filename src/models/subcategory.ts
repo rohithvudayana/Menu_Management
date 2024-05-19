@@ -1,5 +1,4 @@
 import mongoose, { Document, Schema } from "mongoose";
-import { Item } from "./item";
 
 export interface SubcategoryModel extends Document {
   name: string;

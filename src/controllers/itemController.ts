@@ -6,6 +6,7 @@ import { StatusCodes } from "http-status-codes";
 import { Item, ItemModel } from "../models/item";
 import { Subcategory, SubcategoryModel } from "../models/subcategory";
 import mongoose from 'mongoose';
+import { Category } from "../models/category";
 
 export const createItem = asyncWrapper(
     async (req: Request, res: Response, next: NextFunction) => {
@@ -32,7 +33,7 @@ export const createItem = asyncWrapper(
 export const getAllItems = asyncWrapper(
     async (_req: Request, res: Response, next: NextFunction) => {
         try {
-            const allItems = await Item.find({});
+            const allItems = await Item.find();
             if(!allItems){
                 return next(CustomErrors.NotFoundError("No Items preasent in the database."))
             }
@@ -47,7 +48,7 @@ export const getItemsByCategory = asyncWrapper(
     async (req: Request, res: Response, next: NextFunction) => {
         try {
             const CategoryId: string = req.params.categoryId;
-            const categoryData: SubcategoryModel | null = await Subcategory.findById(CategoryId);
+            const categoryData: SubcategoryModel | null = await Category.findById(CategoryId);
             if (!categoryData) {
                 return next(CustomErrors.NotFoundError("Category not found"));
             }
@@ -94,7 +95,7 @@ export const getItemsBySubcategory = asyncWrapper(
 export const getItemByIdOrName = asyncWrapper(
     async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const itemIdOrName = req.params.idorname;
+            const itemIdOrName = req.params.idOrName;
             let item;
             if (mongoose.Types.ObjectId.isValid(itemIdOrName)) {
                 // Treat it as an ID
@@ -128,6 +129,18 @@ export const editItem = asyncWrapper(
                 return next(CustomErrors.NotFoundError("Item not found."));
             }
             res.status(StatusCodes.OK).json(httpResponse(true, "Item updated successfully", updatedItem));
+        } catch (error) {
+            next(error);
+        }
+    }
+);
+
+
+export const deleteAllItems = asyncWrapper(
+    async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            await Item.deleteMany();
+            res.status(StatusCodes.OK).json(httpResponse(true, "All Items deleted successfully", {}));
         } catch (error) {
             next(error);
         }

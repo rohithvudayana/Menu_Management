@@ -1,5 +1,4 @@
 import mongoose, { Document, Schema } from "mongoose";
-import { Subcategory } from "./subcategory";
 
 export interface CategoryModel extends Document {
   name: string;
@@ -10,6 +9,7 @@ export interface CategoryModel extends Document {
   tax: number;
   taxType?: string;
   subcategories: Schema.Types.ObjectId[];
+  items?: Schema.Types.ObjectId[];
 }
 
 const categorySchema = new Schema<CategoryModel>({
@@ -21,6 +21,7 @@ const categorySchema = new Schema<CategoryModel>({
   tax: { type: Number, default: 0 },
   taxType: { type: String },
   subcategories: [{ type: Schema.Types.ObjectId, ref: "Subcategory" }],
+  items: [{ type: Schema.Types.ObjectId, ref: "Item", required: false}]
 });
 
 export const Category = mongoose.model<CategoryModel>("Category", categorySchema);

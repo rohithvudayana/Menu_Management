@@ -22,7 +22,7 @@ export const createSubCategory = asyncWrapper(
             if(!newSubCategory){
                 return next(CustomErrors.BadRequestError("Failed to create subCategory"));
             }
-            res.status(StatusCodes.CREATED).json(httpResponse(true, "Sub-category created successfully", newSubCategory));
+            res.status(StatusCodes.CREATED).json(httpResponse(true, "Sub-category created successfully", newSubCategory));  
         } catch (error) {
             next(error);
         }
@@ -33,7 +33,7 @@ export const getAllSubCategories = asyncWrapper(
     async (_req: Request, res: Response, next: NextFunction) => {
         try {
             const allSubCategories = await Subcategory.find({});
-            if (!allSubCategories || allSubCategories.length === 0) {
+            if (!allSubCategories) {
                 return next(CustomErrors.NotFoundError("No sub-categories found."));
             }
             res.status(StatusCodes.OK).json(httpResponse(true, "All sub-categories retrieved successfully", allSubCategories));
@@ -52,11 +52,11 @@ export const getSubCategoriesByCategory = asyncWrapper(
                 return next(CustomErrors.NotFoundError("Category not found."));
             }
             const subcategoryIds = categoryData.subcategories;
-            if (!subcategoryIds || subcategoryIds.length === 0) {
+            if (!subcategoryIds) {
                 return next(CustomErrors.NotFoundError("No sub-categories found under this category."));
             }
             const subCategories = await Subcategory.find({ _id: { $in: subcategoryIds } });
-            if (!subCategories || subCategories.length === 0) {
+            if (!subCategories) {
                 return next(CustomErrors.NotFoundError("No sub-categories found with these IDs."));
             }
             res.status(StatusCodes.OK).json(httpResponse(true, "Sub-categories retrieved successfully", subCategories));
@@ -110,3 +110,17 @@ export const editSubCategory = asyncWrapper(
     }
 );
 
+
+export const deleteAllSubCategories = asyncWrapper(
+    async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const deletedsubCategories = await Subcategory.deleteMany({});
+            if (!deletedsubCategories) {
+                return next(CustomErrors.NotFoundError("No subCategories found to delete."));
+            }
+            res.status(StatusCodes.OK).json(httpResponse(true, "All subCategories deleted successfully", {}));
+        } catch (error) {
+            next(error);
+        }
+    }
+);
