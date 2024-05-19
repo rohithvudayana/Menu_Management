@@ -1,6 +1,6 @@
 # Guestara
 
-### clone
+### Getting started
 ```bash
 https://github.com/rohithvudayana/Menu_Management.git
 ```
